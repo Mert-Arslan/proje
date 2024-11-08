@@ -19,7 +19,7 @@ class UserController extends Controller
     public function createUser(Request $request)
     {
         try {
-            //Validated
+
             $validateUser = Validator::make($request->all(), 
             [
                 'name' => 'required',
@@ -81,7 +81,7 @@ class UserController extends Controller
                 return response()->json([
                     'status' => false,
                     'message' => 'Email & Password does not match with our record.',
-                ], 401);
+                ], 404);
             }
 
             $user = User::where('email', $request->email)->first();
